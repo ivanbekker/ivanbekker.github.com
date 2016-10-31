@@ -1,421 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">  
 <head>
-	<meta charset="UTF-8">
-	<title>Game</title>
-	<style type="text/css">
-		.left,.right {
-			float: left;
-			display: flex;
-			align-items: center;
-			width: 45%;
-			height: 100%;
-			justify-content: center;
-			box-sizing: border-box;
-		}
-		.left {
-			border-right: 4px solid #364782;
-		}
-		.left span {
-			float: right;
-			display: block;
-			background: chartreuse;
-    		margin-left: 20px;
-		}
-		#start {
-			height: 100%;
-			width: 100%;
-			z-index: 1;
-			position: absolute;
-			background: springgreen;
-		}
-		#start div {
-			justify-content: center;
-			align-content: stretch;
-			width: 55%;
-			margin: 40px;
-		}
-		.startNone {
-			display: none;
-		}
-		#yes,#no {
-			cursor: pointer;
-		}
-		#btn {
-			height: 50px;
-			width: 50px;
-			background: red;
-			border-radius: 50%;
-			margin: 20px;
-			cursor: pointer;
-		}
-		.next_bot {
-			width: 100%;
-			height: 100%;
-			background: #763542;
-			position: absolute;
-			left: 45%;
-			top: 0;
-		}
-		.next_bot span {
-			display: block;
-			float: left;
-			position: relative;
-			top: 20%;
-			height: 50px;
-			width: 50px;
-			background: red;
-			margin: 20px;
-			cursor: pointer;
-		}
-		.arms,.levels {
-			position: relative;
-			width: 100%;
-			overflow:hidden;
-			height: 80px;
-		}
-		#level {
-			position: absolute;
-			top: 0;
-			left: 10px;
-			margin-left: 10px; 
-			height: 80px;
-			width: 800px;
-			background: #763542;
-			z-index: 1; 
-		}
-		#arms_block {
-			position: absolute;
-			top: 10px;
-			left: 10px;
-			margin-left: 10px; 
-			height: 80px;
-			width: 800px;
-			background: #763542;
-			z-index: 1; 
-		}
+  <title>Junior Front-end Developer</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="favicon.ico"> 
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+  <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+  <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+</head> 
 
-		body {
-			padding: 0;
-			margin: 0;
-			height: 97vh;
-			background: springgreen;
-		}
-		#game {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-		}
-		#game2 {
-			/*display: none;*/
-			position: absolute;
-			top: 0;
-			left: 0;
-			background: yellow;
-			width: 100%;
-			height: 100%;
-		}
-		.left2 {
-			margin-top: 100px;
-		}
-		.left2 div, .left2 span {
-			margin: 20px;
-			height: 40px;
-			width: 200px;
-			background: #fff;
-		}
-		.left2 div {
-			cursor: pointer;
-		}
-		#right2 {
-			position: absolute;
-			top: 20%;
-			left: 40%;
-			height: 100px;
-			width: 100px;
-			background: red;
-			border-radius: 50%;
-			margin: 20px;
-			cursor: pointer;	
-		}
-		#helper_block {
-
-		}
-	</style>
-</head>
 <body>
-	<div id="start">
-		<span>ВЫБИРАЙТЕ ИГРУ</span>
-		<br>
-		<div id="yes" onclick="startFunction()">УБИТЬ БОТОВ</div>
-		<div id="no" onclick="start2Function()">НАБИВАНИЕ ОЧКОВ</div>
-	</div>
-	<div id="game2">
-		<div class="left2">
-			<span id="point2">Point: </span>
-			<div class="helper1" onclick="plas1Function()">+1/s auto (10 Point)</div>
-			<div class="helper2" onclick="plas3Function()">+3/s auto (50 Point)</div>
-			<div class="helper3" onclick="plas5Function()">+5/s auto (200 Point)</div>
-			<div class="helper3" onclick="plas10Function()">+10/s auto (1000 Point)</div>
-		</div>
-		<div id="helper_block"></div>
-		<div id="right2" onclick="my2Function()"></div>
-	</div>
-	<div id="game">
-		<div class="left">
-			<span id="neme">bot</span>
-			<br>
-			<span id="info">Жизнь: </span>
-			<br>
-			<span id="level_text">Level: </span>
-			<br>
-			<span id="point">Point: </span>
-		</div>
-		<div class="right">
-			<div id="btn" onclick="myFunction()"></div>
-			<div id="next_bot" class="next_bot startNone">
-				<div class="levels">
-					<div id="level"></div>
-					<span onclick="next_bot1Function()">Level 1</span>
-					<span onclick="next_bot2Function()">Level 2</span>
-					<span onclick="next_bot3Function()">Level 3</span>
-					<span onclick="next_bot4Function()">Level 4</span>
-					<span onclick="next_bot5Function()">Level 5</span>
-					<span onclick="next_bot6Function()">Level 6</span>
-				</div>
-				<div class="arms">
-					<div id="arms_block"></div>
-					<span onclick="next_arms2Function()">-30<br>100Point</span>
-					<span onclick="next_arms3Function()">-50<br>500Point</span>
-					<span onclick="next_arms4Function()">-100<br>700Point</span>
-				</div>
-			</div>
-		</div>
-	</div>
-	<script type="text/javascript">
-
-	//Game2
-	var point_game2 = 0;
-
- 	function start2Function() {
- 		document.getElementById('start').className += 'startNone';
- 		document.getElementById('game').className += 'startNone';
- 	}
- 	my2Function = function() {
- 		point_game2 += 1;
-	  window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	my2_3Function = function() {
- 		point_game2 += 3;
-	  window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	my2_5Function = function() {
- 		point_game2 += 5;
-	  window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	my2_10Function = function() {
- 		point_game2 += 10;
-	  window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	function plas1Function() {
-		setInterval(function() {
-			my2Function();
-  	}, 1000);
-  	point_game2 -= 10;
-  	window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	function plas3Function() {
-		setInterval(function() {
-			my2_3Function();
-  	}, 1000);
-  	point_game2 -= 50;
-  	window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	function plas5Function() {
-		setInterval(function() {
-			my2_5Function();
-  	}, 1000);
-  	point_game2 -= 200;
-  	window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	function plas10Function() {
-		setInterval(function() {
-			my2_10Function();
-  	}, 1000);
-  	point_game2 -= 1000;
-  	window.point_game2 = point_game2;
-		document.getElementById('point2').innerHTML="Point: " + point_game2;
-	};
-	var start_ani = Date.now(); // сохранить время начала
-	var timer_ani = setInterval(function() {
-  	var time_ani_Passed = Date.now() - start_ani;
-  	if (time_ani_Passed >= 10000) {
-    	clearInterval(timer_ani);
-    	return;
-  	};
-  	draw(time_ani_Passed);
-	}, 100);
-	//function draw(timePassed) {
-  	//right2.style.height = 5 + 'px';
-	//}
-
-
- 	var life = 100;
- 	var lifeBot2 = life * 2;
- 	var lifeBot3 = life * 3;
- 	var lifeBot4 = life * 4;
- 	var lifeBot5 = life * 5;
- 	var level = 0;
- 	var kill_bot = 10;
- 	var kill_bot2 = 30;
- 	var kill_bot3 = 50;
- 	var kill_bot4 = 100;
- 	var point = 0;
- 	/*var point1 = point + 100;
- 	var point2 = point + 200;
- 	var point3 = point + 300;
- 	var point4 = point + 400;
- 	var point5 = point + 500;*/
-	function startFunction(){
-		document.getElementById('start').className += 'startNone';
-		document.getElementById('game2').className += 'startNone';
-		newBot();
-		levelFunction();
-		armsFunction();
-	}; 
-	//var life = 100;
-	myFunction = function() {
-	  if (life > 0 ) life -= kill_bot;
-	  window.life = life;
-	  if (life < 1 ) {
-	  	level += 1;
-	  	window.level = level;
-	  	//window.point = point;
-			newBot();
-		};
-		document.getElementById('info').innerHTML="Жизнь: " + life;
-		document.getElementById('level_text').innerHTML="Level: " + level;
-		document.getElementById('point').innerHTML="Point: " + point;
-	  return life;
-	};
-	newBot = function() {
-		document.getElementById('next_bot').classList.remove('startNone');
-	};
-	function next_bot1Function() {	
-		document.getElementById('next_bot').classList.add('startNone');
-		life = life;
-		level = 1;
-		window.life = life;
-		window.level = level;
-		point = point + 100;
-		window.point = point;
-		document.getElementById('info').innerHTML="Жизнь: " + life;
-		document.getElementById('level_text').innerHTML="Level: " + level;
-		document.getElementById('point').innerHTML="Point: " + point;
-		levelFunction();
-		armsFunction();
-	};
-	function next_bot2Function() {	
-		document.getElementById('next_bot').classList.add('startNone');
-		life = lifeBot2;
-		//level += 1;
-		window.life = life;
-		//window.level = level;
-		point = point + 200;
-		window.point = point;
-		document.getElementById('info').innerHTML="Жизнь: " + life;
-		levelFunction();
-	};
-	function next_bot3Function() {	
-		document.getElementById('next_bot').classList.add('startNone');
-		life = lifeBot3;
-		//level += 1;
-		window.life = life;
-		//window.level = level;
-		point = point + 300;
-		window.point = point;
-		document.getElementById('info').innerHTML="Жизнь: " + life;
-		levelFunction();
-		armsFunction();
-	};
-	function next_bot4Function() {	
-		document.getElementById('next_bot').classList.add('startNone');
-		life = lifeBot4;
-		//level += 1;
-		window.life = life;
-		//window.level = level;
-		point = point + 400;
-		window.point = point;
-		document.getElementById('info').innerHTML="Жизнь: " + life;
-		levelFunction();
-		armsFunction();
-	};
-	function next_bot5Function() {	
-		document.getElementById('next_bot').classList.add('startNone');
-		life = lifeBot5;
-		//level += 1;
-		window.life = life;
-		//window.level = level;
-		point = point + 500;
-		window.point = point;
-		document.getElementById('info').innerHTML="Жизнь: " + life;
-		levelFunction();
-		armsFunction();
-	};
-	function levelFunction() {
-		if (level >= 0) {
-			document.getElementById('level').style.left='100px' 
-		};
-		if (level >= 1) {
-			document.getElementById('level').style.left='180px' 
-		};
-		if (level >= 2) {
-			document.getElementById('level').style.left='260px' 
-		};
-		if (level >= 3) {
-			document.getElementById('level').style.left='360px' 
-		};
-		if (level >= 4) {
-			document.getElementById('level').style.left='420px' 
-		};
-	};
-	function next_arms2Function() {
-		kill_bot = kill_bot2
-		window.kill_bot = kill_bot;
-		point -= 100;
-		window.point = point;
-		document.getElementById('point').innerHTML="Point: " + point;
-		armsFunction();
-	};
-	function next_arms3Function() {
-		kill_bot = kill_bot3
-		window.kill_bot = kill_bot;
-		point -= 500;
-		window.point = point;
-		document.getElementById('point').innerHTML="Point: " + point;
-		armsFunction();
-	};
-	function next_arms4Function() {
-		kill_bot = kill_bot4
-		window.kill_bot = kill_bot;
-		point -= 700;
-		window.point = point;
-		document.getElementById('point').innerHTML="Point: " + point;
-		armsFunction();
-	};
-	
-	//info.innerHTML="Жизнь: " + life;
-  </script>
-  <script src="js/armsFunction.js"></script>
-
+  <div class="wrapper">
+    <div class="sidebar-wrapper">
+      <div class="profile-container">
+        <img class="profile" src="assets/images/profile.jpeg" alt="my-foto" />
+        <h1 class="name">Иван Беккер</h1>
+        <h3 class="tagline">Junior Front-end Developer</h3>
+      </div>
+      <div class="contact-container container-block">
+        <ul class="list-unstyled contact-list">
+          <li class="email"><i class="fa fa-envelope"></i><a href="mailto: ivanbekker11990@outlook.com">ivanbekker11990@outlook.com</a></li>
+          <li class="phone"><i class="fa fa-phone"></i><a href="tel: +380957942433">+38 095 794 24 33</a></li>
+          <li class="github"><i class="fa fa-github"></i><a href="https://github.com/ivanbekker" target="_blank">github.com/ivanbekker</a></li>
+          <li class="github"><i class="fa fa-skype"></i><a href="skype: ivan_bekker" target="_blank">ivan_bekker</a></li>
+        </ul>
+      </div>      
+    </div>    
+    <div class="main-wrapper">
+      <section class="section summary-section">
+        <h2 class="section-title"><i class="fa fa-user"></i>Career Profile</h2>
+        <div class="summary">
+          <p>Верстаю лендинги, адаптивные и статические сайты. Имею опыт в HTML5, CSS3, Bootstrap, JQuery, JavaScript, ReactJS, React Native. Владею Photoshop.<br>
+          Аналитический склад ума, легко и быстро обучаюсь.<br>
+          Огромное желание работать.
+          </p>
+        </div>
+      </section>
+      <section class="section">
+        <h2 class="section-title"><i class="fa fa-graduation-cap"></i>Education</h2>
+        <div class="item">
+          <h4 class="job-title">Днепропетровский Национальный Университет</h4>
+          <p class="meta">Кафедра Биофизики и Биохимии</p>
+          <div class="time">2007 - 2012</div>
+        </div>
+        <div class="item">
+          <h4 class="job-title">IT Shool Spalah, Dnipro.</h4>
+          <p class="meta">HTML5,CSS3</p>
+          <div class="time">06-2016 - 09-2016</div>
+        </div>
+        <div class="item">
+          <h4 class="job-title">IT Shool Spalah, Dnipro.</h4>
+          <p class="meta">JavaScript, React, Node.js</p>
+          <div class="time">09-2016 - 11-2016</div>
+        </div>
+      </section>
+      <section class="section">
+        <h2 class="section-title"><i class="fa fa-language"></i>Languages</h2>
+        <ul class="list-unstyled interests-list">
+          <li>Руский</li>
+          <li>Украинский</li>
+          <li>English <span class="lang-desc">(pre-intermediate)</span></li>
+        </ul>
+      </section>
+      <section>  
+        <h2 class="section-title"><i class="fa fa-globe"></i>Interests</h2>
+        <ul class="list-unstyled interests-list">
+          <li>Инженерия программного обеспечения</li>
+          <li>Путешествия</li>
+          <li>Активный отдых</li>
+        </ul>
+      </section>    
+      <section class="section">
+        <h2 class="section-title"><i class="fa fa-rocket"></i>Skills &amp; Proficiency</h2>
+        <div class="skillset">        
+          <div class="item">
+            <h3 class="level-title">HTML5 &amp; CSS3</h3>
+            <div class="level-bar">
+              <div class="level-bar-inner" data-level="90%">
+              </div>                                      
+            </div>                                 
+          </div>
+          <div class="item">
+            <h3 class="level-title">Javascript &amp; React</h3>
+            <div class="level-bar">
+              <div class="level-bar-inner" data-level="70%">
+              </div>                                      
+            </div>                                 
+          </div>
+          <div class="item">
+            <h3 class="level-title">Bootstrap</h3>
+            <div class="level-bar">
+              <div class="level-bar-inner" data-level="80%">
+              </div>                                      
+            </div>                                 
+          </div>
+          <div class="item">
+            <h3 class="level-title">Node.js</h3>
+            <div class="level-bar">
+              <div class="level-bar-inner" data-level="60%">
+              </div>                                      
+            </div>                                 
+          </div>  
+          <div class="item">
+            <h3 class="level-title">Photoshop</h3>
+            <div class="level-bar">
+              <div class="level-bar-inner" data-level="50%">
+              </div>                                      
+            </div>                                 
+          </div>            
+        </div>  
+      </section>           
+    </div>
+  </div>
+  <footer class="footer">  
+  </footer>      
+  <script type="text/javascript" src="assets/plugins/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+  <script type="text/javascript" src="assets/js/main.js"></script>            
 </body>
-</html>
+</html> 
+
